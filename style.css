@@ -2,6 +2,8 @@
     padding: 0;
     margin: 0;
 }
+
+*,
 *::before,
 *::after{
     box-sizing: border-box;
@@ -17,7 +19,7 @@ body{
     height: 100%;
     background-color: #eff6ff;
     grid-template-columns: 2fr 6fr 2fr;
-    grid-template-rows: 120px 1fr 1fr;
+    grid-template-rows: 110px 1fr 1fr;
     gap: 1rem;
     grid-template-areas: 
     "navbar header header"
@@ -33,7 +35,6 @@ body{
     display: grid;
     grid-template-columns: subgrid;
     grid-auto-rows: minmax(2.5rem, auto);
-
     & .searchbar{
         grid-column: 2;
         display: flex;
@@ -44,15 +45,43 @@ body{
         background-color: #dbeafe;
         border-radius: 5px;
         height: 1.5rem;
+        margin-left: 0.5rem;
+        padding-left: 5px;
     }
+    & .profile{
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        & p{
+            display: inline;
+            margin-left: 1rem;
+        }
+    }
+    & .greetings{
+        grid-column: 2;
+        display: grid;
+        grid-template-columns: 6rem 1fr;
+        & img{
+            height: 3rem;
+            width: auto;
+            margin-left: 1.5rem;
+        }
+    }
+
+}
+
+.username{
+    font-size: 1.5rem;
+    font-weight: 700;
 }
 
 .navbar{
     grid-area: navbar;
-    background-color: #2563eb ;
+    background-color: #2aa0df ;
     z-index: 1;
     color: #ffffff;
     padding: 1rem;
+
     & nav{
         display: grid;
         width: 100%;
@@ -62,36 +91,73 @@ body{
         & h1{
             display: inline;
             font-size: 1.5rem;
+            font-weight: 600;
+            margin-left: 1rem;
         }
+        & div{
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+    }
+    & .doublerow{
+        grid-row-end: span 2;
     }
 
 }
 
-.doublerow{
-    grid-row-end: span 2;
-}
+
 .projects{
     grid-area: projects;
+    & h2{
+        margin: 1rem 0;
+    }
 }
 
 .project-wrapper{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-auto-flow: auto;
     gap: 1rem;
+    max-height: 100%;
 
     & .project-card{
         background-color: white;
-        height: 100%;
         width: 100%;
-        border-left: rgb(242, 185, 70) 6px solid;
-        border-radius: 5px;
+        padding: 0.5rem;
+        padding-bottom: 2rem;
+        border-left: rgb(242, 185, 70) 10px solid;
+        border-radius: 10px;
+        position: relative;
     }
 }
-.annoucements{
+
+.project-card::after{
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='20px' width='20px' viewBox='0 -960 960 960' fill='%23000000'%3E%3Cpath d='M680-80q-50 0-85-35t-35-85q0-6 3-28L282-392q-16 15-37 23.5t-45 8.5q-50 0-85-35t-35-85q0-50 35-85t85-35q24 0 45 8.5t37 23.5l281-164q-2-7-2.5-13.5T560-760q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35q-24 0-45-8.5T598-672L317-508q2 7 2.5 13.5t.5 14.5q0 8-.5 14.5T317-452l281 164q16-15 37-23.5t45-8.5q50 0 85 35t35 85q0 50-35 85t-85 35Zm0-80q17 0 28.5-11.5T720-200q0-17-11.5-28.5T680-240q-17 0-28.5 11.5T640-200q0 17 11.5 28.5T680-160ZM200-440q17 0 28.5-11.5T240-480q0-17-11.5-28.5T200-520q-17 0-28.5 11.5T160-480q0 17 11.5 28.5T200-440Zm480-280q17 0 28.5-11.5T720-760q0-17-11.5-28.5T680-800q-17 0-28.5 11.5T640-760q0 17 11.5 28.5T680-720Zm0 520ZM200-480Zm480-280Z'/%3E%3C/svg%3E") 
+            url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='20px' width='20px' viewBox='0 -960 960 960' fill='%23000000'%3E%3Cpath d='M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-680q-75 0-127.5 52.5T300-500q0 75 52.5 127.5T480-320Zm0-72q-45 0-76.5-31.5T372-500q0-45 31.5-76.5T480-608q45 0 76.5 31.5T588-500q0 45-31.5 76.5T480-392Zm0 192q-146 0-266-81.5T40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200Zm0-300Zm0 220q113 0 207.5-59.5T832-500q-50-101-144.5-160.5T480-720q-113 0-207.5 59.5T128-500q50 101 144.5 160.5T480-280Z'/%3E%3C/svg%3E") 
+            url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='20px' width='20px' viewBox='0 -960 960 960' fill='%23000000'%3E%3Cpath d='m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z'/%3E%3C/svg%3E");
+            position: absolute;
+            bottom: 0.1rem;
+            right: 0.1rem;
+}
+
+
+.announcements{
     grid-area: annoucements;
+
+    & h2{
+        margin: 1rem 0;
+    }
+    & div{
+        background-color: white;
+        display: grid;
+        grid-template-rows: repeat(3, 1fr);
+        border-radius: 10px;
+    }
 }
 
 .trending{
     grid-area: trending;
+    & h2{
+        margin: 1rem 0;
+    }
 }
