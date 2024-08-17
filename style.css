@@ -19,7 +19,7 @@ body{
     height: 100%;
     background-color: #eff6ff;
     grid-template-columns: 2fr 6fr 2fr;
-    grid-template-rows: 110px 1fr 1fr;
+    grid-template-rows: 110px minmax(0, 1fr) minmax(0, 1fr);
     gap: 1rem;
     grid-template-areas: 
     "navbar header header"
@@ -33,7 +33,7 @@ body{
     grid-column: navbar-start / header-end;
     grid-row: header-start / header-end;
     background-color: #ffffff;
-    padding-top: 1rem;
+    padding: 1rem;
     display: grid;
     grid-template-columns: subgrid;
     grid-auto-rows: minmax(2.5rem, auto);
@@ -84,7 +84,7 @@ body{
     color: #ffffff;
     padding: 1rem;
 
-    & nav{
+    & .nav-wrapper{
         display: grid;
         width: 100%;
         height: auto;
@@ -105,36 +105,43 @@ body{
     & .doublerow{
         grid-row-end: span 2;
     }
-
 }
 
 
 .projects{
     grid-area: projects;
-    & h2{
-        margin: 1rem 0;
-    }
-}
-
-.project-wrapper{
+    height: 100%;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    max-height: 100%;
-
-    & .project-card{
-        background-color: white;
-        width: 100%;
-        padding: 0.5rem;
-        padding-bottom: 2rem;
-        min-height: 0;
-        overflow: auto;
-        border-left: rgb(242, 185, 70) 10px solid;
-        border-radius: 10px;
-        position: relative;
+    overflow: auto;
+    grid-template-rows: 3.5rem 1fr;
+    padding-bottom: 0.5rem;
+    & h2{
+        margin: 0.5rem;
+        font-size: 1.5rem;
+    }
+    & .project-wrapper{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        max-height: 100%;
+    
+    
     }
 }
 
+
+
+.project-card{
+    background-color: white;
+    width: 100%;
+    padding: 0.5rem;
+    padding-bottom: 2rem;
+    min-height: 0;
+    overflow: auto;
+    border-left: rgb(242, 185, 70) 10px solid;
+    border-radius: 10px;
+    position: relative;
+}
 .project-card::after{
     content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='20px' width='20px' viewBox='0 -960 960 960' fill='%23000000'%3E%3Cpath d='M680-80q-50 0-85-35t-35-85q0-6 3-28L282-392q-16 15-37 23.5t-45 8.5q-50 0-85-35t-35-85q0-50 35-85t85-35q24 0 45 8.5t37 23.5l281-164q-2-7-2.5-13.5T560-760q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35q-24 0-45-8.5T598-672L317-508q2 7 2.5 13.5t.5 14.5q0 8-.5 14.5T317-452l281 164q16-15 37-23.5t45-8.5q50 0 85 35t35 85q0 50-35 85t-85 35Zm0-80q17 0 28.5-11.5T720-200q0-17-11.5-28.5T680-240q-17 0-28.5 11.5T640-200q0 17 11.5 28.5T680-160ZM200-440q17 0 28.5-11.5T240-480q0-17-11.5-28.5T200-520q-17 0-28.5 11.5T160-480q0 17 11.5 28.5T200-440Zm480-280q17 0 28.5-11.5T720-760q0-17-11.5-28.5T680-800q-17 0-28.5 11.5T640-760q0 17 11.5 28.5T680-720Zm0 520ZM200-480Zm480-280Z'/%3E%3C/svg%3E") 
             url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='20px' width='20px' viewBox='0 -960 960 960' fill='%23000000'%3E%3Cpath d='M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-680q-75 0-127.5 52.5T300-500q0 75 52.5 127.5T480-320Zm0-72q-45 0-76.5-31.5T372-500q0-45 31.5-76.5T480-608q45 0 76.5 31.5T588-500q0 45-31.5 76.5T480-392Zm0 192q-146 0-266-81.5T40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200Zm0-300Zm0 220q113 0 207.5-59.5T832-500q-50-101-144.5-160.5T480-720q-113 0-207.5 59.5T128-500q50 101 144.5 160.5T480-280Z'/%3E%3C/svg%3E") 
@@ -147,23 +154,52 @@ body{
 
 .announcements{
     grid-area: announcements;
-    height: 100%;
+    max-height: 100%;
     display: grid;
-    height: 100%;
     grid-template-rows: 3.5rem 1fr;
     margin-right: 1rem;
-    overflow: scroll;
     & h2{
-        margin: 1rem;
+        margin: 0.5rem;
         font-size: 1.5rem;
     }
     & .ann-wrapper{
         display: grid;
         height: 100%;
-        grid-template-rows: auto auto auto;
+        grid-template-rows: repeat(3, 1fr);
         background-color: white;
         border-radius: 10px;
         padding: 0 0.8rem;
         
+        & div{
+            overflow: hidden;
+        }
+    }
+}
+
+.trending{
+    grid-area: trending;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 3.5rem 1fr;
+    margin-right: 1rem;
+    overflow: auto;
+    padding-bottom: 0.5rem;
+    & h2{
+        margin: 0.5rem;
+        font-size: 1.5rem;
+    }
+    & .trend-wrapper{
+        display: grid;
+        height: 100%;
+        grid-template-rows: auto auto auto;
+        grid-template-columns: 1fr 2fr;
+        background-color: white;
+        border-radius: 10px;
+        padding: 0 0.8rem;
+        justify-items: start;
+        align-items: center;
+        & img{
+            width: 75%; 
+        }
     }
 }
